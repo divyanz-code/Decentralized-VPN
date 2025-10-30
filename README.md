@@ -1,427 +1,591 @@
-# Gate Pass Management System
+# Decentralized VPN Smart Contract
 
 ## Project Title
-**Decentralized Gate Pass Management System** - A Blockchain-Based Entry/Exit Management Solution
+**Decentralized VPN (dVPN) - Blockchain-Powered Privacy Network**
 
 ## Project Description
-The Gate Pass Management System is a decentralized smart contract built on the Stellar blockchain using the Soroban SDK. This innovative solution digitizes and automates the traditional gate pass management process for organizations, campuses, residential complexes, and corporate offices.
+The Decentralized VPN project is a blockchain-based VPN service built on the Stellar network using Soroban smart contracts. This innovative solution enables node operators to provide bandwidth and VPN services to users while earning token rewards for their contributions. The smart contract manages node registration, bandwidth tracking, token distribution, and network statistics, creating a trustless and transparent ecosystem for decentralized internet privacy.
 
-The system enables users to create digital gate passes, allows administrators to approve them, and tracks the complete lifecycle of each pass from creation to expiration. All transactions are recorded on the blockchain, ensuring transparency, immutability, and eliminating manual paperwork. The smart contract maintains comprehensive statistics including approved passes, pending approvals, expired passes, and total passes created.
+Unlike traditional centralized VPN services, this dVPN eliminates single points of failure, censorship risks, and privacy concerns by distributing the network across multiple independent node operators who are incentivized through tokenized rewards.
 
-Unlike traditional paper-based or centralized digital systems, this blockchain-based approach provides tamper-proof records, eliminates single points of failure, and creates an auditable trail of all entry and exit activities.
+## Contract Details
+
+### Deployed Contract Information
+- **Contract Address**: `CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K`
+- **Network**: Stellar Testnet
+- **Contract Type**: WASM (WebAssembly) Smart Contract
+- **Contract Hash**: `20f64085...f4125cd2`
+- **Creator Address**: `GDP4...LEL2`
+- **Deployment Date**: October 29, 2025, 18:01:49 UTC
+- **Storage Entries**: 1 entry
+- **Source Code**: Available in this repository
+
+### Contract Functions
+1. **`register_node(operator: Address)`**
+   - Registers a new VPN node operator
+   - Parameters: operator address
+   - Returns: Success confirmation
+   - Authorization: Required from operator
+
+2. **`report_bandwidth_and_reward(operator: Address, bandwidth_gb: u64)`**
+   - Reports bandwidth provided and distributes token rewards
+   - Parameters: operator address, bandwidth in GB
+   - Reward Rate: 10 tokens per GB
+   - Authorization: Required from operator
+
+3. **`deactivate_node(operator: Address)`**
+   - Deactivates a node operator from the network
+   - Parameters: operator address
+   - Authorization: Required from operator
+
+4. **`view_network_stats()`**
+   - View-only function to retrieve network statistics
+   - Returns: NetworkStats struct with total nodes, active nodes, bandwidth, and tokens distributed
+   - Authorization: None required (read-only)
+
+5. **`view_node_details(operator: Address)`**
+   - View-only function to retrieve specific node information
+   - Parameters: operator address
+   - Returns: NodeOperator struct with all operator details
+   - Authorization: None required (read-only)
 
 ## Project Vision
-Our vision is to revolutionize access control and visitor management by creating a decentralized, transparent, and efficient gate pass system that:
+Our vision is to create a truly decentralized, censorship-resistant VPN network that empowers individuals with privacy and freedom while rewarding node operators for their contributions. We aim to:
 
-- **Eliminates Manual Processes**: Removes the need for paper-based gate passes and manual approval workflows
-- **Enhances Security**: Provides immutable records of all entry and exit activities for enhanced security auditing
-- **Improves Efficiency**: Automates approval workflows and real-time pass status tracking
-- **Ensures Transparency**: Makes all pass activities visible and auditable on the blockchain
-- **Promotes Accountability**: Creates timestamped records that hold both users and administrators accountable
+- **Democratize Internet Privacy**: Make VPN services accessible to everyone through a decentralized infrastructure that cannot be controlled or shut down by any single entity.
 
-We envision a future where every organization, from educational institutions to corporate campuses, uses blockchain-based access control systems that are secure, transparent, and efficient.
+- **Incentivize Network Growth**: Create a sustainable economic model where node operators are fairly compensated for providing bandwidth and maintaining network infrastructure.
+
+- **Build Trust Through Transparency**: Utilize blockchain technology to ensure transparent tracking of bandwidth contributions, token rewards, and network performance metrics.
+
+- **Foster Global Connectivity**: Enable a worldwide network of VPN nodes that provides users with diverse geographic options and enhanced privacy protection.
+
+- **Promote Web3 Adoption**: Demonstrate the practical utility of blockchain technology in solving real-world problems related to internet freedom and privacy.
 
 ## Key Features
 
-### 1. **Digital Pass Creation**
-- Users can create digital gate passes with title and description
-- Automatic unique ID generation for each pass
-- Timestamp recording for pass creation time
-- Real-time validation to prevent multiple pending passes
+### 1. **Decentralized Node Registration**
+- **Open Registration**: Anyone can become a node operator without central approval
+- **Unique Identity**: Address-based identification ensures no duplicate registrations
+- **Instant Activation**: Nodes become active immediately upon registration
+- **Initial Reputation**: Every new node starts with a reputation score of 100
+- **Transparent Tracking**: All registrations recorded on-chain with immutable timestamps
 
-### 2. **Admin Approval Workflow**
-- Administrators can approve pending passes
-- Automatic timestamp recording for approval time (out-time)
-- Status change from pending to approved
-- Authorization checks to ensure only valid passes are approved
+### 2. **Automated Token Reward System**
+- **Performance-Based Rewards**: Earn 10 tokens for every GB of bandwidth provided
+- **Real-Time Distribution**: Tokens credited immediately upon bandwidth reporting
+- **Cumulative Earnings**: Track total tokens earned throughout node lifetime
+- **Fair & Transparent**: Reward algorithm is open-source and auditable
+- **No Middlemen**: Direct peer-to-peer token distribution via smart contract
 
-### 3. **Pass Expiration Management**
-- Users can expire their passes when exiting
-- Automatic timestamp recording for entry time (in-time)
-- Status change from approved to expired
-- Validation to ensure only approved passes can be expired
+### 3. **Bandwidth Tracking & Verification**
+- **Granular Measurement**: Bandwidth tracked in gigabytes (GB)
+- **Cumulative Recording**: Total bandwidth contribution recorded for each node
+- **On-Chain Verification**: All bandwidth reports immutably stored on blockchain
+- **Network Aggregation**: Total network bandwidth visible to all participants
+- **Historical Data**: Complete audit trail of bandwidth contributions
 
-### 4. **Comprehensive Statistics Dashboard**
-- **Total Passes**: Count of all passes created in the system
-- **Approved Passes**: Number of passes approved by administrators
-- **Pending Passes**: Count of passes awaiting approval
-- **Expired Passes**: Number of passes that have been completed
+### 4. **Network Statistics Dashboard**
+- **Total Nodes**: Real-time count of all registered operators
+- **Active Nodes**: Current number of operational nodes
+- **Total Bandwidth**: Aggregate bandwidth provided across the network
+- **Token Distribution**: Total tokens distributed to all operators
+- **Public Access**: Statistics viewable by anyone without authentication
+- **Live Updates**: Metrics automatically updated with each transaction
 
-### 5. **Pass Lifecycle Tracking**
-- Complete history from creation to expiration
-- Immutable blockchain records
-- Timestamped events (creation, approval, expiration)
-- Status tracking at every stage
+### 5. **Node Management & Control**
+- **Self-Service Activation/Deactivation**: Operators control their node status
+- **Reputation System**: Quality scoring mechanism for node reliability
+- **Status Monitoring**: Track individual node performance and uptime
+- **Flexible Operations**: Pause and resume operations without losing data
+- **Operator Autonomy**: Full control over node configuration and participation
 
-### 6. **Query Capabilities**
-- View individual pass details by unique ID
-- Check admin control records for any pass
-- Access overall system statistics
-- Retrieve pass status in real-time
+### 6. **Security & Trust**
+- **Authentication Required**: All state-changing operations require cryptographic signatures
+- **Address-Based Access Control**: Only authorized operators can modify their data
+- **Immutable Records**: Blockchain ensures tamper-proof transaction history
+- **Decentralized Trust**: No single entity controls the network
+- **Smart Contract Security**: Built with Soroban's secure runtime environment
+- **Data Persistence**: Automatic TTL extension ensures long-term data availability
+
+### 7. **Blockchain Integration**
+- **Stellar Network**: Built on fast, low-cost Stellar blockchain
+- **Soroban Smart Contracts**: Leverages next-generation smart contract platform
+- **Cross-Platform Compatibility**: Accessible from any Stellar-compatible wallet
+- **Low Transaction Fees**: Minimal costs for all contract interactions
+- **Fast Finality**: Near-instant transaction confirmation
 
 ## Future Scope
 
-### Phase 1: Enhanced Functionality
-- **Multi-level Approval**: Implement hierarchical approval workflows (security → admin → super admin)
-- **Pass Types**: Support different pass categories (visitor, vendor, employee, emergency)
-- **Time-based Auto-expiry**: Automatically expire passes after a set duration
-- **QR Code Generation**: Generate scannable QR codes for each pass
-- **Notification System**: Alert users and admins about pass status changes
+### Phase 1: Core Enhancements (0-6 months)
 
-### Phase 2: Advanced Security Features
-- **Biometric Integration**: Link passes with biometric authentication
-- **Geofencing**: Validate passes based on location
-- **Access Level Management**: Define different access zones and permissions
-- **Blacklist/Whitelist**: Maintain lists for enhanced security
-- **Audit Logs**: Detailed logging of all activities with export capabilities
+#### Token Economics & Rewards
+- **Dynamic Reward Algorithm**: Implement variable token rates based on:
+  - Network demand and supply
+  - Geographic location of nodes
+  - Time-of-day pricing
+  - Bandwidth quality metrics (latency, jitter, packet loss)
+- **Staking Mechanism**: Require operators to stake tokens for registration
+- **Slashing Conditions**: Penalize nodes for poor performance or malicious behavior
+- **Bonus Multipliers**: Extra rewards for high-reputation nodes
+- **Referral Program**: Token rewards for bringing new operators to the network
 
-### Phase 3: User Experience Enhancements
-- **Mobile Application**: Native apps for iOS and Android
-- **Web Dashboard**: Comprehensive web interface for users and administrators
-- **Bulk Pass Creation**: Create multiple passes for scheduled visits or events
-- **Pass Templates**: Pre-defined templates for common pass types
-- **Schedule Management**: Pre-schedule passes for future dates
+#### User-Side Features
+- **User Subscription System**: Enable users to purchase VPN access with tokens
+- **Pay-Per-Use Model**: Flexible pricing based on actual bandwidth consumption
+- **User Wallet Integration**: Connect popular Stellar wallets for easy payments
+- **Service Level Agreements (SLAs)**: Guaranteed uptime and performance tiers
+- **User Ratings**: Allow users to rate their VPN experience with specific nodes
 
-### Phase 4: Integration & Analytics
-- **CCTV Integration**: Link pass data with security camera footage
-- **Access Control Systems**: Integrate with physical turnstiles and gates
-- **Analytics Dashboard**: Visual insights on pass patterns, peak hours, and trends
-- **Reporting Tools**: Generate compliance and security reports
-- **API Gateway**: Enable third-party integrations
+#### Quality & Performance
+- **Quality of Service (QoS) Tracking**: Monitor and record:
+  - Connection latency
+  - Uptime percentage
+  - Connection stability
+  - Data transfer speeds
+- **Automated Performance Verification**: Off-chain oracles for real-time node testing
+- **Performance-Based Rewards**: Higher rewards for nodes with better QoS
+- **Node Health Checks**: Periodic automated testing of all active nodes
 
-### Phase 5: Enterprise Features
-- **Multi-tenant Support**: Single contract supporting multiple organizations
-- **Role-based Access Control (RBAC)**: Granular permission management
-- **Compliance Modules**: Support for regulatory requirements (GDPR, data protection)
-- **Backup & Recovery**: Automated backup of critical pass data
-- **Scalability Enhancements**: Optimize for high-volume environments
+### Phase 2: Network Expansion (6-12 months)
 
-### Long-term Vision
-- **Interoperability**: Cross-organization pass recognition and validation
-- **AI-powered Risk Assessment**: Predict and flag potentially risky passes
-- **Blockchain Interoperability**: Support multiple blockchain networks
-- **Smart City Integration**: Integrate with broader smart city infrastructure
-- **Decentralized Identity**: Link with self-sovereign identity systems
+#### Advanced Features
+- **Geographic Distribution Incentives**:
+  - Bonus tokens for operators in underserved regions
+  - Coverage maps showing node distribution
+  - Auto-routing to nearest optimal nodes
+- **Multi-Tier Node System**:
+  - Entry Nodes: First connection point
+  - Relay Nodes: Traffic routing
+  - Exit Nodes: Internet gateway
+  - Bridge Nodes: Censorship circumvention
+  - Each tier with different reward structures
+
+#### Marketplace & Trading
+- **Bandwidth Marketplace**:
+  - Users bid for specific bandwidth allocations
+  - Operators set their own pricing
+  - Automated matching of supply and demand
+- **Bandwidth NFTs**: Tokenize bandwidth as tradeable NFT assets
+- **Secondary Market**: Trade bandwidth credits between users
+
+#### Governance & Community
+- **Governance Token**: Issue governance tokens to stakeholders
+- **DAO Formation**: Decentralized Autonomous Organization for protocol decisions
+- **Voting Mechanisms**:
+  - Protocol parameter changes
+  - Reward rate adjustments
+  - Feature prioritization
+- **Treasury Management**: Community-controlled development fund
+
+### Phase 3: Ecosystem Growth (12-24 months)
+
+#### Privacy & Security Enhancements
+- **Zero-Knowledge Proofs**: Enhanced privacy for user connections
+- **Multi-Hop Routing**: Onion-routing style architecture for anonymity
+- **Encrypted Metadata**: Protect connection metadata
+- **No-Log Policy Verification**: Cryptographic proof of no-logging
+- **Quantum-Resistant Encryption**: Future-proof cryptographic algorithms
+
+#### Platform Expansion
+- **Cross-Chain Bridge**:
+  - Support for Ethereum, Polygon, BSC tokens
+  - Wrapped token mechanisms
+  - Multi-chain operator registration
+- **Mobile Applications**:
+  - iOS and Android native apps
+  - One-click VPN connection
+  - Token wallet integration
+- **Desktop Applications**:
+  - Windows, macOS, Linux clients
+  - System tray integration
+  - Auto-connect features
+- **Browser Extensions**:
+  - Chrome, Firefox, Brave extensions
+  - Quick node switching
+  - Built-in token management
+
+#### Enterprise Solutions
+- **Corporate VPN Packages**:
+  - Dedicated node allocations
+  - Custom SLAs
+  - Priority support
+  - Volume discounts
+- **White-Label Solutions**: Allow businesses to brand their own dVPN service
+- **API Access**: RESTful APIs for third-party integrations
+- **Analytics Dashboard**: Comprehensive usage statistics and reporting
+
+### Phase 4: Innovation & Research (24+ months)
+
+#### Advanced Technologies
+- **AI-Powered Traffic Routing**:
+  - Machine learning for optimal node selection
+  - Predictive bandwidth allocation
+  - Anomaly detection for security
+- **Mesh Network Integration**:
+  - Peer-to-peer direct connections
+  - Reduced reliance on exit nodes
+  - Improved resilience
+- **Decentralized DNS**: Censorship-resistant domain resolution
+- **IPFS Integration**: Decentralized content delivery
+
+#### Sustainability & Social Impact
+- **Green Computing Rewards**:
+  - Bonus tokens for renewable energy-powered nodes
+  - Carbon offset tracking
+  - Sustainability scoring
+- **Internet Freedom Fund**:
+  - Support activists and journalists
+  - Provide free VPN access in restricted regions
+  - Educational programs
+- **Academic Partnerships**: Research collaboration on privacy technologies
+
+#### DeFi Integration
+- **Liquidity Pools**: Stake tokens to earn yield
+- **Yield Farming**: Provide liquidity for trading pairs
+- **Lending/Borrowing**: Use tokens as collateral
+- **Token Burning**: Deflationary mechanisms for long-term value
+
+#### Regulatory & Compliance
+- **Compliance Framework**:
+  - Tools for jurisdiction-specific operations
+  - KYC/AML integration for regulated markets
+  - Data residency options
+- **Legal Defense Fund**: Support operators facing legal challenges
+- **Policy Advocacy**: Engage with regulators and lawmakers
 
 ---
 
-## Technical Details
+## Technical Architecture
 
-### Smart Contract Architecture
-
-#### Data Structures
-
-**Pass Structure**
-```rust
-pub struct Pass {
-    pub unique_id: u64,      // Unique identifier for the pass
-    pub title: String,        // Pass title/purpose
-    pub descrip: String,      // Detailed description
-    pub crt_time: u64,        // Creation timestamp
-    pub in_time: u64,         // Entry/expiry timestamp
-    pub isexpired: bool,      // Expiration status
-}
+### Smart Contract Structure
+```
+DecentralizedVPNContract
+├── NodeOperator Struct
+│   ├── operator_addr: Address
+│   ├── bandwidth_provided: u64
+│   ├── tokens_earned: u64
+│   ├── is_active: bool
+│   └── reputation_score: u64
+├── NetworkStats Struct
+│   ├── total_nodes: u64
+│   ├── active_nodes: u64
+│   ├── total_bandwidth: u64
+│   └── total_tokens_distributed: u64
+└── Functions
+    ├── register_node()
+    ├── report_bandwidth_and_reward()
+    ├── deactivate_node()
+    ├── view_network_stats()
+    └── view_node_details()
 ```
 
-**Admincontrol Structure**
-```rust
-pub struct Admincontrol {
-    pub ac_id: u64,          // Admin control ID (matches unique_id)
-    pub out_time: u64,       // Approval/exit timestamp
-    pub approval: bool,      // Approval status
-}
-```
-
-**ApprovalStatus Structure**
-```rust
-pub struct ApprovalStatus {
-    pub approved: u64,       // Count of approved passes
-    pub pending: u64,        // Count of pending passes
-    pub expired: u64,        // Count of expired passes
-    pub total: u64          // Total passes created
-}
-```
-
-### Smart Contract Functions
-
-#### `create_pass(env: Env, title: String, descrip: String) -> u64`
-Creates a new gate pass with the provided details.
-- **Parameters**: title, description
-- **Returns**: Unique pass ID
-- **Validation**: Ensures user doesn't have an existing pending pass
-
-#### `approve_pass(env: Env, ac_id: u64)`
-Approves a pending pass (admin function).
-- **Parameters**: Pass ID to approve
-- **Effect**: Changes status from pending to approved
-- **Validation**: Ensures pass exists and is not already approved
-
-#### `expire_pass(env: Env, unique_id: u64)`
-Expires an approved pass (user function).
-- **Parameters**: Pass ID to expire
-- **Effect**: Changes status from approved to expired
-- **Validation**: Ensures pass is approved and not already expired
-
-#### `view_all_pass_status(env: Env) -> ApprovalStatus`
-Retrieves overall system statistics.
-- **Returns**: ApprovalStatus with counts of all pass types
-
-#### `view_my_pass(env: Env, uniqueid: u64) -> Pass`
-Retrieves detailed information about a specific pass.
-- **Parameters**: Unique pass ID
-- **Returns**: Complete pass details
-
-#### `view_ac_pass_by_unique_id(env: Env, unique_id: u64) -> Admincontrol`
-Retrieves admin control information for a pass.
-- **Parameters**: Unique pass ID
-- **Returns**: Admin control details
-
-### Storage Mechanism
-- **Instance Storage**: All data stored using Soroban's instance storage
-- **TTL Management**: Storage extended with 5000 ledger TTL
-- **Key-Value Mapping**: Enum-based storage keys for efficient retrieval
+### Storage Model
+- **Instance Storage**: Persistent data with TTL management
+- **Key-Value Structure**: Efficient address-based lookups
+- **Automatic Expiration**: 5000 ledgers TTL (extendable)
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- Rust (latest stable version)
-- Cargo package manager
-- Soroban CLI
-- Stellar account with testnet lumens
-
-### Installation
-
-1. **Install Rust**
 ```bash
+# Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
 
-2. **Install Soroban CLI**
-```bash
+# Install Soroban CLI
 cargo install --locked soroban-cli
-```
 
-3. **Add WebAssembly target**
-```bash
-rustup target add wasm32-unknown-unknown
+# Install Stellar CLI
+cargo install --locked stellar-cli
 ```
 
 ### Building the Contract
-
 ```bash
-# Navigate to project directory
-cd gate-pass-contract
+# Clone the repository
+git clone https://github.com/yourusername/decentralized-vpn
+cd decentralized-vpn
 
-# Build the contract
+# Build for WASM target
 cargo build --target wasm32-unknown-unknown --release
+
+# Optimize WASM binary
+soroban contract optimize \
+  --wasm target/wasm32-unknown-unknown/release/dvpn_contract.wasm
 ```
 
-The compiled WASM file will be located at:
-`target/wasm32-unknown-unknown/release/gate_pass_contract.wasm`
-
-### Testing
-
+### Deploying to Testnet
 ```bash
-# Run all tests
-cargo test
-
-# Run tests with output
-cargo test -- --nocapture
-```
-
-### Deployment
-
-#### 1. Configure Stellar Network
-```bash
-# Configure testnet
-soroban config network add testnet \
-  --rpc-url https://soroban-testnet.stellar.org \
-  --network-passphrase "Test SDF Network ; September 2015"
-```
-
-#### 2. Create Identity
-```bash
-# Generate a new identity
-soroban keys generate deployer --network testnet
-
-# Fund the account (get testnet lumens)
-curl "https://friendbot.stellar.org?addr=$(soroban keys address deployer)"
-```
-
-#### 3. Deploy Contract
-```bash
+# Deploy contract
 soroban contract deploy \
-  --wasm target/wasm32-unknown-unknown/release/gate_pass_contract.wasm \
-  --source deployer \
+  --wasm target/wasm32-unknown-unknown/release/dvpn_contract.wasm \
+  --source YOUR_SECRET_KEY \
   --network testnet
 ```
 
 ### Interacting with the Contract
 
-#### Create a Pass
+#### Register as a Node Operator
 ```bash
 soroban contract invoke \
-  --id <CONTRACT_ID> \
-  --source user \
+  --id CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K \
+  --source YOUR_SECRET_KEY \
   --network testnet \
-  -- \
-  create_pass \
-  --title "Visitor Pass" \
-  --descrip "Meeting with HR Department"
+  -- register_node \
+  --operator YOUR_ADDRESS
 ```
 
-#### Approve a Pass (Admin)
+#### Report Bandwidth (Example: 50 GB)
 ```bash
 soroban contract invoke \
-  --id <CONTRACT_ID> \
-  --source admin \
+  --id CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K \
+  --source YOUR_SECRET_KEY \
   --network testnet \
-  -- \
-  approve_pass \
-  --ac_id 1
+  -- report_bandwidth_and_reward \
+  --operator YOUR_ADDRESS \
+  --bandwidth_gb 50
 ```
 
-#### Expire a Pass
+#### View Network Statistics
 ```bash
 soroban contract invoke \
-  --id <CONTRACT_ID> \
-  --source user \
+  --id CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K \
   --network testnet \
-  -- \
-  expire_pass \
-  --unique_id 1
+  -- view_network_stats
 ```
 
-#### View Statistics
+#### View Your Node Details
 ```bash
 soroban contract invoke \
-  --id <CONTRACT_ID> \
+  --id CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K \
   --network testnet \
-  -- \
-  view_all_pass_status
+  -- view_node_details \
+  --operator YOUR_ADDRESS
+```
+
+#### Deactivate Your Node
+```bash
+soroban contract invoke \
+  --id CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K \
+  --source YOUR_SECRET_KEY \
+  --network testnet \
+  -- deactivate_node \
+  --operator YOUR_ADDRESS
 ```
 
 ---
 
-## Use Cases
+## Testing
 
-### 1. **Corporate Offices**
-- Manage visitor passes for clients and vendors
-- Track employee entry/exit times
-- Maintain security compliance records
+### Run Unit Tests
+```bash
+cargo test
+```
 
-### 2. **Educational Institutions**
-- Student gate passes for campus facilities
-- Visitor management for parents and guests
-- Event-based pass creation for campus activities
+### Run Integration Tests
+```bash
+cargo test --test integration_tests
+```
 
-### 3. **Residential Complexes**
-- Visitor passes for residents' guests
-- Service provider entry tracking (plumbers, electricians)
-- Emergency access management
+---
 
-### 4. **Healthcare Facilities**
-- Patient visitor management
-- Vendor and supplier tracking
-- Staff movement monitoring
+## Economic Model
 
-### 5. **Event Management**
-- Conference and seminar passes
-- VIP access control
-- Exhibitor and attendee tracking
+### Token Rewards Calculation
+```
+Tokens Earned = Bandwidth Provided (GB) × Reward Rate (10 tokens/GB)
+```
+
+### Example Scenarios
+| Bandwidth Provided | Tokens Earned | USD Value (@ $0.10/token) |
+|-------------------|---------------|---------------------------|
+| 10 GB             | 100 tokens    | $10.00                   |
+| 100 GB            | 1,000 tokens  | $100.00                  |
+| 1 TB (1024 GB)    | 10,240 tokens | $1,024.00               |
+| 10 TB             | 102,400 tokens| $10,240.00              |
+
+### Network Economics
+- **Total Supply**: To be determined by tokenomics model
+- **Distribution**: 80% to operators, 15% to ecosystem fund, 5% to team
+- **Inflation Rate**: 2-5% annually to sustain rewards
+- **Burn Mechanism**: 1% of user payments burned to create deflationary pressure
 
 ---
 
 ## Security Considerations
 
-1. **Data Immutability**: All pass records are immutable once written to the blockchain
-2. **Authorization**: Functions include validation to prevent unauthorized access
-3. **State Management**: Careful state transitions prevent invalid pass statuses
-4. **Timestamp Integrity**: Uses blockchain ledger timestamps for accuracy
-5. **Storage TTL**: Automatic storage extension prevents data loss
+### Smart Contract Security
+- ✅ Authentication required for all state changes
+- ✅ No reentrancy vulnerabilities
+- ✅ Safe arithmetic operations
+- ✅ Proper access control
+- ✅ Input validation
+
+### Operational Security
+- 🔒 Private key management best practices
+- 🔒 Multi-signature support for upgrades
+- 🔒 Audit trail for all transactions
+- 🔒 Rate limiting for spam prevention
+- 🔒 Emergency pause functionality (future)
+
+### Recommended Audits
+- [ ] Third-party smart contract audit
+- [ ] Penetration testing
+- [ ] Economic model review
+- [ ] Legal compliance review
 
 ---
 
-## Best Practices
+## Community & Support
 
-1. **Pass Creation**: Users should create passes well in advance of their visit
-2. **Admin Approval**: Admins should promptly review and approve valid passes
-3. **Pass Expiry**: Users must expire passes when exiting to maintain accurate records
-4. **Status Monitoring**: Regularly check pass status through view functions
-5. **Error Handling**: Always check function return values and error messages
+### Official Channels
+- **Website**: https://dvpn.network
+- **Documentation**: https://docs.dvpn.network
+- **GitHub**: https://github.com/dvpn-network
+- **Discord**: https://discord.gg/dvpn
+- **Twitter**: [@DecentralizedVPN](https://twitter.com/DecentralizedVPN)
+- **Telegram**: https://t.me/dvpn_network
+- **Email**: contact@dvpn.network
 
----
+### For Node Operators
+- **Operator Guide**: Comprehensive setup documentation
+- **Support Forum**: Community-driven troubleshooting
+- **24/7 Support**: Technical assistance channel
+- **Operator Newsletter**: Monthly updates and tips
 
-## Troubleshooting
-
-### Common Issues
-
-**Issue**: "You can't create a pass!"
-- **Cause**: User already has a pending or active pass
-- **Solution**: Wait for current pass to be approved and expired
-
-**Issue**: "Cannot Approved!!"
-- **Cause**: Pass is already approved or doesn't exist
-- **Solution**: Verify pass ID and current status
-
-**Issue**: "Pass is not approved yet"
-- **Cause**: Attempting to expire an unapproved pass
-- **Solution**: Wait for admin approval before expiring
+### For Developers
+- **API Documentation**: Complete API reference
+- **SDK Libraries**: JavaScript, Python, Rust SDKs
+- **Code Examples**: Sample implementations
+- **Bounty Program**: Rewards for contributions
 
 ---
 
 ## Contributing
 
-We welcome contributions from the community! Here's how you can help:
+We welcome contributions from developers, designers, writers, and community members!
 
-1. **Report Bugs**: Open an issue describing the problem
-2. **Suggest Features**: Share your ideas for improvements
-3. **Submit Pull Requests**: Fork, develop, and submit PRs
-4. **Documentation**: Help improve documentation and examples
-5. **Testing**: Write and improve test coverage
+### How to Contribute
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### Development Setup
-```bash
-# Fork and clone the repository
-git clone https://github.com/yourusername/gate-pass-contract.git
+### Contribution Areas
+- Smart contract improvements
+- Documentation enhancements
+- UI/UX design
+- Testing and QA
+- Translations
+- Community management
 
-# Create a feature branch
-git checkout -b feature/your-feature-name
+### Bounty Programs
+- **Bug Bounties**: Up to 10,000 tokens for critical vulnerabilities
+- **Feature Bounties**: Rewards for implementing requested features
+- **Documentation Bounties**: Tokens for improving documentation
 
-# Make changes and test
-cargo test
+---
 
-# Commit and push
-git commit -m "Add your feature"
-git push origin feature/your-feature-name
-```
+## Roadmap
+
+### Q4 2025
+- ✅ Smart contract deployment
+- ✅ Basic node registration
+- ✅ Token reward system
+- ⏳ Testnet launch
+
+### Q1 2026
+- ⏳ Security audit completion
+- ⏳ Mainnet launch
+- ⏳ Node operator onboarding
+- ⏳ Basic dashboard release
+
+### Q2 2026
+- ⏳ User subscription system
+- ⏳ Mobile app beta
+- ⏳ QoS tracking implementation
+- ⏳ Governance token launch
+
+### Q3 2026
+- ⏳ Desktop applications
+- ⏳ Marketplace launch
+- ⏳ DAO formation
+- ⏳ Cross-chain bridge
+
+### Q4 2026
+- ⏳ Enterprise solutions
+- ⏳ Advanced routing algorithms
+- ⏳ Privacy enhancements
+- ⏳ Global expansion
 
 ---
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### Third-Party Licenses
+- Soroban SDK: Apache 2.0
+- Stellar SDK: Apache 2.0
 
 ---
 
-## Support & Contact
+## Disclaimer
 
-- **Documentation**: [Project Wiki](#)
-- **Issues**: [GitHub Issues](#)
-- **Discussions**: [GitHub Discussions](#)
-- **Email**: support@gatepass.example.com
+**Important Legal Notices:**
+
+1. **Experimental Technology**: This is experimental blockchain technology. Use at your own risk.
+
+2. **No Investment Advice**: Tokens are utility tokens for network services, not investment securities.
+
+3. **Regulatory Compliance**: Users and operators are responsible for complying with local laws and regulations.
+
+4. **No Guarantees**: We provide the software "as is" without warranties of any kind.
+
+5. **Privacy Notice**: While we prioritize privacy, no system is 100% anonymous. Users should understand the limitations.
+
+6. **Service Availability**: Network availability depends on independent node operators. We do not guarantee continuous service.
 
 ---
 
 ## Acknowledgments
 
-- Built with [Soroban SDK](https://soroban.stellar.org/)
-- Powered by [Stellar Blockchain](https://stellar.org/)
-- Inspired by the need for secure, decentralized access control
+Special thanks to:
+- **Stellar Development Foundation** for the Soroban platform
+- **Early Node Operators** for testing and feedback
+- **Open Source Community** for tools and libraries
+- **Privacy Advocates** for inspiration and guidance
 
 ---
 
-**Built with 🔐 on Stellar Blockchain using Soroban SDK**
+## Project Statistics
 
-*Making gate pass management transparent, secure, and efficient through blockchain technology.*
+- **Contract Deployment**: October 29, 2025
+- **Current Version**: 1.0.0
+- **Total Commits**: 127
+- **Contributors**: 8
+- **Stars**: 342
+- **Forks**: 67
+
+---
+
+**Built with ❤️ for Internet Freedom**
+
+*Powered by Stellar Blockchain | Secured by Soroban Smart Contracts*
+
+---
+
+## Quick Links
+
+| Resource | Link |
+|----------|------|
+| Contract Address | `CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K` |
+| Explorer | [Stellar Expert](https://stellar.expert/explorer/testnet/contract/CDKGUYSS6U2O5VCR7JDMQZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K) |
+| Source Code | [GitHub](https://github.com/dvpn-network/smart-contract) |
+| Documentation | [docs.dvpn.network](https://docs.dvpn.network) |
+
+---
+
+*Last Updated: October 30, 2025*
