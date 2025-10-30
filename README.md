@@ -587,5 +587,8 @@ Special thanks to:
 | Documentation | [docs.dvpn.network](https://docs.dvpn.network) |
 
 ---
+![Screenshot](image.png)
+
 
 *Last Updated: October 30, 2025*
+
