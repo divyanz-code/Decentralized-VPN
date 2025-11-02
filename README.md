@@ -587,8 +587,11 @@ Special thanks to:
 | Documentation | [docs.dvpn.network](https://docs.dvpn.network) |
 
 ---
+##contract detail
+GCSMAZ4SF2U3IGRQSWYB67SGWO2647BH4YEA2X726VSK3EA3BUE7CHJU
 ![Screenshot](image.png)
 
 
 *Last Updated: October 30, 2025*
+
 
