@@ -590,10 +590,11 @@ Special thanks to:
 ## contract detail
 
 CDK6UYSS6U205VCR7JDMOZWF36OZUECSF6R7KHXJHSG42PWRGQG6Y44K
-![Screenshot](image.png)
+![Screenshot](image.png).
 
 
 *Last Updated: October 30, 2025*
+
 
 
 
